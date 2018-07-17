@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Input;
 use Redirect;
 use Session;
@@ -47,7 +48,7 @@ class BookController extends Controller
         $rules = array(
             'title'     => 'required',
             'author'    => 'required|alpha',
-            'isbn'      => 'required|numeric|digits:13',
+            'isbn'      => 'required|numeric|digits:13|unique:books,isbn',
             'published' => 'required|numeric|digits:4|max:2018'
         );
         $validator = Validator::make(Input::all(), $rules);
@@ -77,8 +78,12 @@ class BookController extends Controller
      */
     public function show($title, $uuid)
     {
-        $book = Book::find($uuid);
-
+        // $book = Book::find($uuid);
+        $book = Book::where([
+            ['title', '=', $title],
+            // [DB::raw('substr(CAST(uuid AS varchar(100)), -6)'), '=', $uuid]
+        ])->first();
+        
         return View::make('books.show')
             ->with('book', $book);
     }
@@ -109,7 +114,7 @@ class BookController extends Controller
         $rules = array(
             'title'     => 'required',
             'author'    => 'required|alpha',
-            'isbn'      => 'required|numeric|digits:13',
+            'isbn'      => 'required|numeric|digits:13|unique:books,isbn',
             'published' => 'required|numeric|digits:4|max:2018'
         );
         $validator = Validator::make(Input::all(), $rules);
