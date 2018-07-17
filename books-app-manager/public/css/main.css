@@ -1,0 +1,61 @@
+h1 {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.book-card {
+    padding: 15px;
+}
+
+.book-card a {
+    width: 100%;
+    height: 100%; 
+}
+
+.book-card a:hover {
+    text-decoration: none;
+}
+
+.book-card .card {
+    width: 100%;
+    border: 1px solid black;
+    height: 200px;
+    display: table;
+}
+.book-card .card .card-body {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 25px;
+}
+
+.book-card .card::before, .card__two::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity .38s ease-in-out, transform .35s ease-in-out;
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+}
+.book-card .card::before {
+    transform: scale3d(0, 1, 1);
+    transform-origin: left top;
+    border-top: 1px solid #acacac;
+    border-bottom: 1px solid #acacac;
+}
+.book-card .card::after {
+    transform: scale3d(1, 0, 1);
+    transform-origin: right top;
+    border-right: 1px solid #acacac;
+    border-left: 1px solid #acacac;
+}
+.book-card .card:hover::before, 
+.book-card .card:hover::after, 
+.book-card .card:focus::before,
+.book-card .card:focus::after {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+}

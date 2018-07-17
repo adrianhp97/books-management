@@ -4,8 +4,8 @@
     @include('layouts.head')
 </head>
 <body>
+    @include('layouts.navigator')
     <div class="container">
-        @include('layouts.navigator')
         <div id="content">
             <h1>@yield('title')</h1>
             
