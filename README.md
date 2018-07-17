@@ -1,10 +1,10 @@
 # Book Management
 
-One Paragraph of project description goes here
+This project is a simple web application to manage books in hypothetical library.
 
 ## Getting Started
 
-Clone this project and run ```php artisan serve``` in books app manager folder.
+Clone this project.
 
 ### Prerequisites
 
@@ -16,15 +16,14 @@ What things you need to install the software and how to install them
 3. php7.0^
 ```
 
-### Installing
+### Installing and Deployment
 
 To install this project
 1. Clone the repository
 2. Change directory to book app manager
-3. run command ```php artisan serve```
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+3. Edit database configuration in ```.env```
+4. Run command ```php artisan migrate```
+5. Run command ```php artisan serve```
 ## Authors
 
 * **Adrian Hartarto P** - *Initial work* - [adrianhp97](https://github.com/adrianhp97)
